@@ -1,0 +1,127 @@
+/* ============================================================
+   05 SECÇÕES
+   Sobre, percurso, competências, contacto, rodapé e avisos.
+   ============================================================ */
+
+/* ---- sobre ---- */
+.sobre{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(36px,6vw,96px);align-items:start}
+.sobre__texto p{font-size:18px;line-height:1.65;color:var(--tinta-2);text-wrap:pretty}
+.sobre__texto p + p{margin-top:18px}
+.sobre__texto .sobre__abertura{
+  font-size:clamp(22px,2.4vw,29px);line-height:1.35;letter-spacing:-.02em;color:var(--tinta);
+  margin-bottom:26px;
+}
+.factos{
+  padding:6px 24px;border:1px solid var(--linha);border-radius:18px;background:var(--superficie);
+  box-shadow:var(--sombra);
+}
+.factos > div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;padding:14px 0}
+.factos > div + div{border-top:1px solid var(--linha)}
+.factos dt{padding-top:3px;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--tinta-3)}
+.factos dd{font-size:15.5px;line-height:1.45}
+
+/* ---- percurso ---- */
+.percurso{margin-top:clamp(72px,9vw,120px)}
+.linha-tempo{list-style:none;border-bottom:1px solid var(--linha)}
+.linha-tempo li{
+  display:grid;grid-template-columns:140px minmax(0,1fr);gap:24px;align-items:baseline;
+  padding:20px 0;border-top:1px solid var(--linha);
+  transition:background-color .25s;
+}
+.linha-tempo__ano{font-family:var(--mono);font-size:14px;color:var(--acento)}
+.linha-tempo__o-que{font-size:18.5px;font-weight:500;letter-spacing:-.015em}
+.linha-tempo__onde{margin-top:2px;font-size:15px;color:var(--tinta-2)}
+
+/* ---- competências ----
+   as dicas escondidas não podem alargar a página no telemóvel */
+#competencias{overflow-x:clip}
+.competencias{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grupo{
+  padding:26px 26px 28px;border:1px solid var(--linha);border-radius:18px;background:var(--superficie);
+  transition:border-color .3s;
+}
+.grupo:hover{border-color:var(--linha-forte)}
+.grupo__titulo{display:flex;align-items:baseline;gap:12px;font-size:19px;letter-spacing:-.02em}
+.grupo__num{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--acento)}
+.chips{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.chip{
+  position:relative;display:inline-flex;align-items:center;height:38px;padding:0 15px;
+  border-radius:999px;border:1px solid var(--linha-forte);background:transparent;
+  font-size:15px;font-weight:500;color:var(--tinta);cursor:default;
+  transition:border-color .2s,color .2s,background-color .2s;
+}
+button.chip:hover,button.chip:focus-visible,.chip--ativo{border-color:var(--acento);color:var(--acento);background:var(--acento-suave)}
+.chip--simples{color:var(--tinta-2)}
+.chip__dica{
+  --dx:0px;
+  position:absolute;left:50%;bottom:calc(100% + 10px);z-index:5;
+  translate:calc(-50% + var(--dx)) 6px;
+  padding:9px 13px;border-radius:11px;background:var(--tinta);color:var(--fundo);
+  font-size:13px;font-weight:450;line-height:1.35;text-align:left;white-space:nowrap;
+  box-shadow:var(--sombra);opacity:0;pointer-events:none;
+  transition:opacity .2s var(--ease),translate .3s var(--ease-out);
+}
+.chip__dica::after{
+  content:"";position:absolute;top:100%;left:calc(50% - var(--dx));margin-left:-6px;
+  border:6px solid transparent;border-top-color:var(--tinta);
+}
+.chip__rotulo{
+  display:block;margin-bottom:2px;font-family:var(--mono);font-size:10px;
+  text-transform:uppercase;letter-spacing:.09em;opacity:.6;
+}
+button.chip:hover .chip__dica,button.chip:focus-visible .chip__dica,.chip--ativo .chip__dica{opacity:1;translate:calc(-50% + var(--dx)) 0}
+
+/* ---- contacto ---- */
+.contacto{padding-bottom:clamp(80px,10vw,128px)}
+.contacto__titulo{
+  margin-top:20px;font-size:clamp(68px,12.5vw,176px);font-weight:650;line-height:.88;letter-spacing:-.06em;
+}
+.contacto__texto{margin-top:28px;max-width:56ch;font-size:18px;color:var(--tinta-2);text-wrap:pretty}
+.email{margin-top:44px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.email__ligacao{
+  font-size:clamp(23px,3.8vw,46px);font-weight:500;letter-spacing:-.035em;line-height:1.15;
+  background:linear-gradient(currentColor,currentColor) 0 100%/0 2px no-repeat;
+  padding-bottom:4px;transition:background-size .5s var(--ease-out),color .2s;
+}
+.email__ligacao:hover{background-size:100% 2px;color:var(--acento)}
+.email__copiar{width:48px;height:48px}
+.email__copiar .copiado,.email__copiar--feito .copiar{display:none}
+.email__copiar--feito .copiado{display:block}
+.email__copiar--feito{color:var(--acento);border-color:var(--acento)}
+
+.contactos{margin-top:44px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;list-style:none}
+.contactos a{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:12px;
+  padding:18px;border:1px solid var(--linha);border-radius:16px;background:var(--superficie);
+  transition:border-color .25s,translate .3s var(--ease-out),box-shadow .3s;
+}
+.contactos a > svg:first-child{grid-row:span 2;width:22px;height:22px;color:var(--tinta-2)}
+.contactos span{font-weight:600;letter-spacing:-.01em}
+.contactos small{grid-column:2;font-family:var(--mono);font-size:11.5px;color:var(--tinta-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.contactos .seta{grid-column:3;grid-row:1 / span 2;color:var(--tinta-3);transition:translate .3s var(--ease-out),color .2s}
+.contactos a:hover{border-color:var(--linha-forte);translate:0 -3px;box-shadow:var(--sombra)}
+.contactos a:hover .seta{color:var(--acento);translate:2px -2px}
+.contactos a[download]:hover .seta{translate:0 2px}
+
+.relogio{
+  margin-top:40px;display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:13px;color:var(--tinta-3);
+}
+.relogio time{color:var(--tinta)}
+
+/* ---- rodapé ---- */
+.rodape{padding-block:28px;border-top:1px solid var(--linha);font-size:14px;color:var(--tinta-3)}
+.rodape__in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px 24px}
+.rodape__lema{font-family:var(--mono);font-size:13px;color:var(--tinta-2)}
+.rodape__topo{justify-self:end;display:inline-flex;align-items:center;gap:6px;color:var(--tinta-2);transition:color .2s}
+.rodape__topo:hover{color:var(--tinta)}
+.rodape__topo svg{width:15px;height:15px}
+
+/* ---- aviso (ex.: "email copiado") ---- */
+.aviso{
+  position:fixed;left:50%;bottom:24px;z-index:70;translate:-50% 20px;
+  padding:12px 18px;border-radius:999px;background:var(--tinta);color:var(--fundo);
+  font-size:14px;font-weight:500;box-shadow:var(--sombra-grande);
+  opacity:0;pointer-events:none;transition:opacity .25s var(--ease),translate .35s var(--ease-out);
+}
+.aviso--visivel{opacity:1;translate:-50% 0}

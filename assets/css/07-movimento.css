@@ -1,0 +1,41 @@
+/* ============================================================
+   07 MOVIMENTO
+   Entrada da abertura, revelação ao fazer scroll e o respeito
+   por "prefers-reduced-motion". Só se esconde o que o
+   JavaScript vai mostrar (classe .js no <html>).
+   ============================================================ */
+
+/* enquanto o inglês não é aplicado, não se mostra o português */
+.idioma-a-carregar body{opacity:0;animation:mostra 0s 1.2s forwards}
+@keyframes mostra{to{opacity:1}}
+
+/* troca de tema: o círculo é desenhado pelo 02-app.js */
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+
+/* abertura: em cascata, pela ordem de --i */
+.js .entrada{opacity:0;animation:entra 1s var(--ease-out) forwards;animation-delay:calc(.1s + var(--i,0) * .08s)}
+@keyframes entra{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}
+
+/* linhas da ficha em C, uma a uma */
+.js .ficha .l{opacity:0;animation:linha .55s var(--ease-out) forwards;animation-delay:calc(.65s + var(--n,0) * .075s)}
+.ficha .l:nth-child(2){--n:1}.ficha .l:nth-child(3){--n:2}.ficha .l:nth-child(4){--n:3}
+.ficha .l:nth-child(5){--n:4}.ficha .l:nth-child(6){--n:5}.ficha .l:nth-child(7){--n:6}
+.ficha .l:nth-child(8){--n:7}.ficha .l:nth-child(9){--n:8}.ficha .l:nth-child(10){--n:9}
+@keyframes linha{from{opacity:0;translate:-8px 0}to{opacity:1;translate:0 0}}
+
+/* revelação ao entrar no ecrã */
+.js .revela{opacity:0;translate:0 32px;transition:opacity .9s var(--ease-out),translate 1s var(--ease-out)}
+.js .revela.visto{opacity:1;translate:0 0}
+.js .competencias .revela:nth-child(2),.js .contactos.revela{transition-delay:.08s}
+.js .competencias .revela:nth-child(3){transition-delay:.16s}
+.js .competencias .revela:nth-child(4){transition-delay:.24s}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .entrada,.js .ficha .l,.js .revela{opacity:1;translate:none;animation:none;transition:none}
+  .faixa__pista,.estado__ponto::after,.cursor-texto,.a-tocar .irqs i,.arq__camada + .arq__camada::after{animation:none}
+  .faixa__pista{flex-wrap:wrap;width:auto}
+  .faixa ul + ul{display:none}
+  .ficha{transition:none}
+  .caso[open],.caso::backdrop{animation:none}
+}

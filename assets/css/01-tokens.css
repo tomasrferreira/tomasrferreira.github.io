@@ -1,0 +1,124 @@
+/* ============================================================
+   01 TOKENS
+   Todas as cores, tipos e medidas do site. Os valores
+   hexadecimais vivem só aqui.
+   ============================================================ */
+
+:root{
+  /* ---- tema claro (por omissão) ---- */
+  --fundo:#F4F3EE;
+  --fundo-2:#ECEAE3;
+  --superficie:#FBFAF7;
+  --tinta:#10161E;
+  --tinta-2:#4A5462;
+  --tinta-3:#7C8592;
+  --linha:rgba(16,22,30,.11);
+  --linha-forte:rgba(16,22,30,.22);
+  --acento:#0B7A72;
+  --acento-forte:#075F58;
+  --acento-suave:rgba(11,122,114,.10);
+  --acento-txt:#FFFFFF;
+  --vivo:#1FA35B;
+  --vivo-anel:rgba(31,163,91,.35);
+  --sombra:0 1px 2px rgba(16,22,30,.05),0 10px 30px -12px rgba(16,22,30,.18);
+  --sombra-grande:0 40px 80px -30px rgba(16,22,30,.45);
+  --veu:rgba(8,10,14,.6);
+
+  /* ---- ficha de código (sempre escura) ---- */
+  --codigo-fundo:#0E131A;
+  --codigo-barra:#151B24;
+  --codigo-borda:rgba(255,255,255,.07);
+  --codigo-txt:#D6DCE4;
+  --codigo-dim:#5F6B7B;
+  --codigo-k:#F38BA8;
+  --codigo-t:#7DD3FC;
+  --codigo-p:#B4BEFE;
+  --codigo-s:#A6E3A1;
+  --codigo-n:#FAB387;
+  --codigo-m:#5EEAD4;
+
+  /* ---- molduras (browser, janela, telemóvel) ---- */
+  --janela:#1A1E25;
+  --janela-barra:#252A32;
+  --janela-txt:rgba(255,255,255,.62);
+  --janela-campo:rgba(255,255,255,.07);
+  --telemovel:#0B0B0D;
+  --luz-1:#FF5F57;
+  --luz-2:#FEBC2E;
+  --luz-3:#28C840;
+  --sombra-moldura:0 30px 60px -18px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.06);
+  --vidro:rgba(0,0,0,.45);
+  --vidro-borda:rgba(255,255,255,.1);
+  --vidro-txt:#FFFFFF;
+
+  /* ---- mundo Plastic Club (cores do próprio site) ---- */
+  --pl-cafe:#2B1F18;
+  --pl-bege:#D0C6B5;
+  --pl-brilho:rgba(124,32,50,.62);
+  --pl-luz:rgba(208,198,181,.16);
+
+  /* ---- mundo Plants vs. Zombies ---- */
+  --pvz-1:#10301B;
+  --pvz-2:#133A20;
+  --pvz-brilho:rgba(245,200,66,.16);
+  --pvz-sol:#F5C842;
+  --pvz-sol-brilho:rgba(245,200,66,.6);
+  --pvz-txt:rgba(255,255,255,.88);
+  --pvz-txt-2:rgba(255,255,255,.5);
+  --pvz-chip:rgba(0,0,0,.3);
+  --pvz-chip-borda:rgba(255,255,255,.09);
+  --pvz-led:rgba(255,255,255,.22);
+
+  /* ---- tipos ---- */
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,serif;
+
+  /* ---- medidas ---- */
+  --max:1200px;
+  --margem:clamp(16px,4vw,32px);
+  --topo-alt:64px;
+  --seccao-folga:clamp(96px,13vw,168px);  /* espaço em cima e em baixo de cada secção */
+  --salto:40px;          /* ao saltar para uma secção: distância entre a barra do topo e o rótulo */
+  --raio:14px;
+  --raio-grande:22px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+
+  color-scheme:light;
+}
+
+/* ---- tema escuro ---- */
+:root[data-tema="escuro"]{
+  --fundo:#0B0E12;
+  --fundo-2:#10141A;
+  --superficie:#141920;
+  --tinta:#ECEFF3;
+  --tinta-2:#A7B0BC;
+  --tinta-3:#6F7884;
+  --linha:rgba(236,239,243,.09);
+  --linha-forte:rgba(236,239,243,.2);
+  --acento:#3CCDB9;
+  --acento-forte:#73E2D3;
+  --acento-suave:rgba(60,205,185,.12);
+  --acento-txt:#06201D;
+  --vivo:#34D17A;
+  --vivo-anel:rgba(52,209,122,.35);
+  --sombra:0 1px 2px rgba(0,0,0,.3),0 12px 30px -12px rgba(0,0,0,.6);
+  --sombra-grande:0 40px 90px -30px rgba(0,0,0,.85);
+  color-scheme:dark;
+}
+
+/* sem JavaScript, segue a preferência do sistema */
+@media (prefers-color-scheme:dark){
+  :root:not([data-tema]){
+    --fundo:#0B0E12;--fundo-2:#10141A;--superficie:#141920;
+    --tinta:#ECEFF3;--tinta-2:#A7B0BC;--tinta-3:#6F7884;
+    --linha:rgba(236,239,243,.09);--linha-forte:rgba(236,239,243,.2);
+    --acento:#3CCDB9;--acento-forte:#73E2D3;--acento-suave:rgba(60,205,185,.12);--acento-txt:#06201D;
+    --vivo:#34D17A;--vivo-anel:rgba(52,209,122,.35);
+    --sombra:0 1px 2px rgba(0,0,0,.3),0 12px 30px -12px rgba(0,0,0,.6);
+    --sombra-grande:0 40px 90px -30px rgba(0,0,0,.85);
+    color-scheme:dark;
+  }
+}

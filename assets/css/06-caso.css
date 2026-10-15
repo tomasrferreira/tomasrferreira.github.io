@@ -1,0 +1,102 @@
+/* ============================================================
+   06 CASOS DE ESTUDO
+   Janelas (<dialog>) com os vídeos completos, capítulos,
+   decisões técnicas e o diagrama da arquitetura do PvZ.
+   ============================================================ */
+
+html:has(.caso[open]){overflow:hidden}
+.caso{
+  width:min(1100px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 48px);
+  margin:auto;padding:0;border:1px solid var(--linha);border-radius:24px;
+  background:var(--fundo);color:var(--tinta);box-shadow:var(--sombra-grande);overflow:hidden;
+}
+.caso[open]{animation:caso-entra .5s var(--ease-out)}
+.caso::backdrop{background:var(--veu);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:veu-entra .4s var(--ease)}
+@keyframes caso-entra{from{opacity:0;translate:0 28px;scale:.98}}
+@keyframes veu-entra{from{opacity:0}}
+.caso__in{
+  max-height:calc(100dvh - 50px);overflow-y:auto;overscroll-behavior:contain;
+  padding:0 clamp(20px,4.5vw,56px) clamp(28px,4.5vw,56px);
+  scrollbar-width:thin;scrollbar-color:var(--linha-forte) transparent;
+}
+.caso__topo{
+  position:sticky;top:0;z-index:3;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  padding:clamp(22px,3.5vw,40px) 0 20px;
+  background:var(--fundo);box-shadow:0 1px 0 var(--linha);margin-bottom:24px;
+}
+.caso__topo h2{margin-top:12px;font-size:clamp(32px,5vw,58px)}
+.caso__fechar{width:46px;height:46px;background:var(--fundo)}
+
+/* ---- leitores de vídeo ---- */
+.leitores{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.289fr);gap:clamp(12px,2vw,24px);align-items:start}
+.leitor{margin:0}
+.leitor video{width:100%;height:auto;border-radius:12px;background:var(--janela);box-shadow:var(--sombra)}
+.leitor figcaption{margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--tinta-3)}
+.leitor--jogo{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:20px;align-items:start}
+.capitulos{list-style:none;display:grid;gap:2px}
+.capitulos button{
+  width:100%;display:grid;grid-template-columns:48px minmax(0,1fr);gap:8px;align-items:baseline;
+  padding:11px 12px;border:0;border-radius:10px;background:transparent;text-align:left;
+  font-size:14.5px;color:var(--tinta-2);transition:background-color .2s,color .2s;
+}
+.capitulos button span:first-child{font-family:var(--mono);font-size:12.5px;color:var(--tinta-3)}
+.capitulos button:hover{background:var(--fundo-2);color:var(--tinta)}
+.capitulos button[aria-current="true"]{background:var(--acento-suave);color:var(--tinta)}
+.capitulos button[aria-current="true"] span:first-child{color:var(--acento)}
+
+/* ---- ficha técnica ---- */
+.ficha-tecnica{
+  margin-top:36px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  border-block:1px solid var(--linha);
+}
+.ficha-tecnica > div{padding:16px 16px 16px 0}
+.ficha-tecnica > div + div{padding-left:16px;border-left:1px solid var(--linha)}
+.ficha-tecnica dt{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-3)}
+.ficha-tecnica dd{margin-top:6px;font-size:15px;line-height:1.45}
+
+/* ---- blocos de texto ---- */
+.caso__bloco{margin-top:44px;max-width:780px;scroll-margin-top:120px}
+.caso__bloco:has(.decisoes),.caso__bloco:has(.arq){max-width:none}
+.caso__bloco:focus{outline:none}
+.caso__bloco h3{font-size:clamp(21px,2.2vw,25px);letter-spacing:-.025em}
+.caso__bloco > p{margin-top:10px;max-width:72ch;font-size:16.5px;line-height:1.65;color:var(--tinta-2);text-wrap:pretty}
+
+.decisoes{margin-top:20px;list-style:none;counter-reset:d;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.decisoes li{
+  counter-increment:d;display:grid;gap:6px;align-content:start;
+  padding:20px;border:1px solid var(--linha);border-radius:16px;background:var(--superficie);
+}
+.decisoes li::before{content:counter(d,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--acento)}
+.decisoes strong{font-size:16.5px;font-weight:600;letter-spacing:-.015em}
+.decisoes span{font-size:14.5px;line-height:1.6;color:var(--tinta-2)}
+
+.caso__fim{margin-top:36px;display:flex}
+
+/* ---- arquitetura do PvZ ---- */
+.arq{margin-top:22px;list-style:none;display:grid;gap:14px}
+.arq__camada{
+  position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center;
+  padding:14px 16px;border:1px solid var(--linha);border-radius:14px;background:var(--superficie);
+}
+.arq__camada--hw{border-color:color-mix(in srgb,var(--acento) 45%,transparent);background:var(--acento-suave)}
+.arq__camada + .arq__camada::before{
+  content:"";position:absolute;left:44px;top:-15px;width:2px;height:14px;background:var(--linha-forte);
+}
+.arq__camada + .arq__camada::after{
+  content:"";position:absolute;left:42px;top:-16px;width:6px;height:6px;border-radius:50%;
+  background:var(--acento);animation:desce 1.8s var(--ease) infinite;animation-delay:var(--k,0s);
+}
+.arq__camada:nth-child(3){--k:.3s}
+.arq__camada:nth-child(4){--k:.6s}
+.arq__camada:nth-child(5){--k:.9s}
+@keyframes desce{0%{translate:0 0;opacity:0}20%{opacity:1}80%{opacity:1}100%{translate:0 12px;opacity:0}}
+.arq__nome{font-weight:600;font-size:15px;letter-spacing:-.01em}
+.arq ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none}
+.arq ul li{
+  display:inline-flex;align-items:baseline;gap:7px;padding:6px 10px;border-radius:8px;
+  background:var(--fundo-2);font-size:13.5px;
+}
+.arq code{font-family:var(--mono);font-size:12.5px}
+.arq small{font-size:12px;color:var(--tinta-3)}
+.arq__texto{font-size:14.5px;line-height:1.5;color:var(--tinta-2)}

@@ -1,0 +1,164 @@
+/* ============================================================
+   03 TOPO E ABERTURA
+   Barra fixa, nome, ficha em C e faixa de tecnologias.
+   ============================================================ */
+
+/* ---- barra do topo ---- */
+.topo{
+  position:fixed;inset:0 0 auto;z-index:50;height:var(--topo-alt);
+  border-bottom:1px solid transparent;
+  transition:background-color .3s var(--ease),border-color .3s var(--ease),backdrop-filter .3s;
+}
+.topo--fundo{
+  background:color-mix(in srgb,var(--fundo) 80%,transparent);
+  -webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);
+  border-bottom-color:var(--linha);
+}
+.topo__in{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px}
+
+.marca{display:inline-flex;align-items:center;gap:11px;justify-self:start;font-weight:600;letter-spacing:-.02em;font-size:15.5px}
+.marca__sigla{
+  display:grid;place-items:center;width:32px;height:32px;border-radius:9px;
+  background:var(--tinta);color:var(--fundo);
+  font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:-.04em;
+  transition:background-color .3s var(--ease),rotate .5s var(--ease-out);
+}
+.marca:hover .marca__sigla{background:var(--acento);color:var(--acento-txt);rotate:-8deg}
+
+.nav{display:flex;gap:2px}
+.nav a{
+  position:relative;padding:8px 13px;border-radius:999px;
+  font-size:14.5px;color:var(--tinta-2);transition:color .2s,background-color .2s;
+}
+.nav a:hover{color:var(--tinta);background:var(--fundo-2)}
+.nav a[aria-current="true"]{color:var(--tinta)}
+.nav a[aria-current="true"]::after{
+  content:"";position:absolute;left:50%;bottom:2px;width:4px;height:4px;margin-left:-2px;
+  border-radius:50%;background:var(--acento);
+}
+
+.topo__acoes{display:flex;align-items:center;gap:8px;justify-self:end}
+.idioma{display:inline-flex;padding:3px;border:1px solid var(--linha);border-radius:999px}
+.idioma button{
+  padding:5px 9px;border:0;border-radius:999px;background:transparent;
+  font-family:var(--mono);font-size:12px;font-weight:500;color:var(--tinta-3);
+  transition:color .2s,background-color .2s;
+}
+.idioma button:hover{color:var(--tinta)}
+.idioma button[aria-pressed="true"]{background:var(--tinta);color:var(--fundo)}
+[data-tema="escuro"] .so-claro,[data-tema="claro"] .so-escuro{display:none}
+.topo__menu{display:none}
+.topo__menu .menu-fechar,.topo--menu .topo__menu .menu-abrir{display:none}
+.topo--menu .topo__menu .menu-fechar{display:block}
+
+/* ---- abertura ---- */
+.hero{
+  position:relative;overflow:hidden;
+  padding-top:calc(var(--topo-alt) + clamp(48px,9vh,120px));
+  min-height:min(100svh,1000px);display:flex;flex-direction:column;
+}
+.hero__grelha{
+  position:relative;z-index:1;flex:1;
+  display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  gap:clamp(32px,5vw,80px);align-items:center;
+}
+
+.estado{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:6px 14px 6px 11px;border:1px solid var(--linha);border-radius:999px;
+  background:color-mix(in srgb,var(--superficie) 70%,transparent);
+  font-size:13.5px;color:var(--tinta-2);
+}
+.estado__ponto{
+  position:relative;width:8px;height:8px;border-radius:50%;background:var(--vivo);flex:none;
+}
+.estado__ponto::after{
+  content:"";position:absolute;inset:0;border-radius:50%;background:var(--vivo-anel);
+  animation:pulsa 2.2s var(--ease-out) infinite;
+}
+@keyframes pulsa{from{transform:scale(1);opacity:1}to{transform:scale(3.2);opacity:0}}
+
+.hero__nome{
+  margin-top:26px;
+  font-size:clamp(64px,10.5vw,150px);font-weight:650;
+  line-height:.88;letter-spacing:-.06em;
+}
+.hero__nome > span{display:block}
+.hero__nome .ponto{color:var(--acento)}
+.hero__lema{
+  margin-top:30px;max-width:27ch;
+  font-size:clamp(21px,2.1vw,27px);line-height:1.32;letter-spacing:-.02em;text-wrap:balance;
+}
+.hero__lema em{font-size:1.1em}
+.hero__intro{margin-top:16px;max-width:50ch;font-size:17px;color:var(--tinta-2);text-wrap:pretty}
+.hero__acoes{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.redes{margin-top:28px;display:flex;gap:6px;list-style:none}
+.redes a{
+  display:grid;place-items:center;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--linha);color:var(--tinta-2);
+  transition:color .2s,border-color .2s,translate .2s var(--ease);
+}
+.redes a:hover{color:var(--tinta);border-color:var(--linha-forte);translate:0 -2px}
+
+/* ---- ficha em C ---- */
+.ficha{
+  --rx:4deg;--ry:-9deg;
+  margin:0;justify-self:end;width:100%;max-width:540px;
+  border-radius:16px;overflow:hidden;
+  background:var(--codigo-fundo);border:1px solid var(--codigo-borda);
+  box-shadow:var(--sombra-grande);
+  transform:perspective(1300px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition:transform .8s var(--ease-out);
+  will-change:transform;
+}
+.ficha__barra{
+  display:flex;align-items:center;gap:14px;padding:12px 14px;
+  background:var(--codigo-barra);border-bottom:1px solid var(--codigo-borda);
+  font-family:var(--mono);font-size:12px;color:var(--codigo-dim);
+}
+.ficha__ficheiro{color:var(--codigo-txt);opacity:.75}
+.ficha__lingua{
+  margin-left:auto;padding:2px 8px;border-radius:6px;border:1px solid var(--codigo-borda);
+  font-size:11px;color:var(--codigo-t);
+}
+.ficha__codigo{
+  margin:0;padding:20px 22px 24px 0;overflow-x:auto;white-space:normal;
+  font-family:var(--mono);font-size:clamp(11px,.94vw,13.5px);line-height:1.8;color:var(--codigo-txt);
+  counter-reset:linha;scrollbar-width:none;
+}
+.ficha__codigo::-webkit-scrollbar{display:none}
+.ficha__codigo code{display:block;font:inherit;min-width:max-content}
+.ficha__codigo .l{display:block;white-space:pre;counter-increment:linha;padding-left:54px;position:relative}
+.ficha__codigo .l::before{
+  content:counter(linha);position:absolute;left:0;width:36px;text-align:right;
+  color:var(--codigo-dim);opacity:.55;
+}
+.ficha .c{color:var(--codigo-dim);font-style:italic}
+.ficha .k{color:var(--codigo-k)}
+.ficha .t{color:var(--codigo-t)}
+.ficha .p{color:var(--codigo-p)}
+.ficha .s{color:var(--codigo-s)}
+.ficha .n{color:var(--codigo-n)}
+.ficha .m{color:var(--codigo-m)}
+.cursor-texto{
+  display:inline-block;width:.6em;height:1.15em;margin-left:3px;vertical-align:-.2em;
+  background:var(--codigo-m);animation:pisca 1.05s steps(1) infinite;
+}
+@keyframes pisca{50%{opacity:0}}
+
+/* ---- faixa de tecnologias ---- */
+.faixa{
+  position:relative;z-index:1;margin-top:clamp(64px,10vh,120px);
+  padding-block:18px;border-top:1px solid var(--linha);overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
+          mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
+}
+.faixa__pista{display:flex;width:max-content;animation:faixa 46s linear infinite}
+.faixa:hover .faixa__pista{animation-play-state:paused}
+.faixa ul{display:flex;list-style:none}
+.faixa li{
+  display:flex;align-items:center;gap:30px;padding-right:30px;
+  font-family:var(--mono);font-size:14px;color:var(--tinta-2);white-space:nowrap;
+}
+.faixa li::after{content:"";width:5px;height:5px;rotate:45deg;background:var(--linha-forte)}
+@keyframes faixa{to{transform:translateX(-50%)}}

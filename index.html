@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-en="Tomás Ferreira · Web development portfolio">Tomás Ferreira · Portefólio de desenvolvimento web</title>
+<meta name="description" content="Portefólio de Tomás Ferreira, finalista de Engenharia Informática e Computação na FEUP. Desenvolvimento web full stack, com projetos como o site do Plastic Club e um Plants vs. Zombies escrito em C para MINIX." data-en-content="Portfolio of Tomás Ferreira, final-year Informatics and Computing Engineering student at FEUP. Full stack web development, with projects such as the Plastic Club website and a Plants vs. Zombies game written in C for MINIX.">
+<meta name="author" content="Tomás Gonçalves Ribeiro Ferreira">
+<meta name="theme-color" content="#F4F3EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0E12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<!-- Endereço público. Quando o domínio tomasrferreira.dev estiver ligado,
+     trocar https://tomasrferreira.github.io por https://tomasrferreira.dev em todo o ficheiro. -->
+<link rel="canonical" href="https://tomasrferreira.github.io/">
+<!-- Partilha (LinkedIn, WhatsApp…) -->
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://tomasrferreira.github.io/">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:title" content="Tomás Ferreira · Portefólio de desenvolvimento web">
+<meta property="og:description" content="Finalista de L.EIC na FEUP. Desenho e programo para a web com gosto pelo pormenor.">
+<meta property="og:image" content="https://tomasrferreira.github.io/assets/img/partilha.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tomás Gonçalves Ribeiro Ferreira",
+  "alternateName": "Tomás Ferreira",
+  "url": "https://tomasrferreira.github.io/",
+  "image": "https://tomasrferreira.github.io/assets/img/partilha.jpg",
+  "jobTitle": "Estudante de Engenharia Informática e Computação",
+  "email": "mailto:tomas.r.ferreira@hotmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Vila do Conde", "addressCountry": "PT" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Faculdade de Engenharia da Universidade do Porto", "sameAs": "https://sigarra.up.pt/feup/" },
+  "knowsAbout": ["Desenvolvimento web", "Front-end", "Back-end", "HTML", "CSS", "JavaScript", "C", "C++", "Python", "PHP", "SQL"],
+  "knowsLanguage": ["pt", "en"],
+  "sameAs": [
+    "https://www.linkedin.com/in/tomasgrferreira",
+    "https://github.com/tomasrferreira"
+  ]
+}
+</script>
+<script>
+  /* antes de pintar: tema e idioma guardados, para não piscar */
+  (function(){
+    var r = document.documentElement, t = null, l = null;
+    r.classList.remove("no-js"); r.classList.add("js");
+    try { t = localStorage.getItem("tf-tema"); l = localStorage.getItem("tf-idioma"); } catch(e){}
+    if (t !== "claro" && t !== "escuro") t = matchMedia("(prefers-color-scheme: dark)").matches ? "escuro" : "claro";
+    r.setAttribute("data-tema", t);
+    if (!l) l = /^pt\b/i.test(navigator.language || "pt") ? "pt" : "en";
+    if (l === "en") r.classList.add("idioma-a-carregar");
+    r.setAttribute("data-idioma", l);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/01-tokens.css">
+<link rel="stylesheet" href="assets/css/02-base.css">
+<link rel="stylesheet" href="assets/css/03-topo-hero.css">
+<link rel="stylesheet" href="assets/css/04-projetos.css">
+<link rel="stylesheet" href="assets/css/05-seccoes.css">
+<link rel="stylesheet" href="assets/css/06-caso.css">
+<link rel="stylesheet" href="assets/css/07-movimento.css">
+<link rel="stylesheet" href="assets/css/08-responsivo.css">
+<script src="assets/js/01-idioma.js" defer></script>
+<script src="assets/js/02-app.js" defer></script>
+</head>
+<body>
+
+<!-- ícones (usados com <use href="#i-…">) -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-seta" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+  <symbol id="i-baixo" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-cima" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-direita" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2.5 12h2M19.5 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-lua" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5Z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-copiar" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></symbol>
+  <symbol id="i-certo" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-cadeado" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+  <symbol id="i-fechar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-mais" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.82-.26.82-.57v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.31-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+</svg>
+
+<a class="saltar" href="#conteudo" data-en="Skip to content">Saltar para o conteúdo</a>
+
+<!-- ============ BARRA DO TOPO ============ -->
+<header class="topo" data-topo>
+  <div class="topo__in contentor">
+    <a class="marca" href="#inicio" aria-label="Tomás Ferreira, voltar ao início" data-en-aria-label="Tomás Ferreira, back to top">
+      <span class="marca__sigla" aria-hidden="true">tf</span>
+      <span class="marca__nome" aria-hidden="true">Tomás Ferreira</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Principal" data-en-aria-label="Main">
+      <a href="#projetos" data-en="Work">Projetos</a>
+      <a href="#sobre" data-en="About">Sobre</a>
+      <a href="#competencias" data-en="Skills">Competências</a>
+      <a href="#contacto" data-en="Contact">Contacto</a>
+    </nav>
+
+    <div class="topo__acoes">
+      <div class="idioma" role="group" aria-label="Idioma" data-en-aria-label="Language">
+        <button type="button" data-idioma="pt" aria-pressed="true" lang="pt">PT</button>
+        <button type="button" data-idioma="en" aria-pressed="false" lang="en">EN</button>
+      </div>
+      <button type="button" class="icone-botao" data-mudar-tema aria-label="Mudar o tema">
+        <svg class="so-claro"><use href="#i-lua"/></svg>
+        <svg class="so-escuro"><use href="#i-sol"/></svg>
+      </button>
+      <a class="botao botao--pequeno topo__cv" href="assets/cv/CV_Tomas_Ferreira_PT.pdf" data-en-href="assets/cv/CV_Tomas_Ferreira_EN.pdf" download>
+        <span>CV</span><svg><use href="#i-download"/></svg>
+      </a>
+      <button type="button" class="icone-botao topo__menu" data-menu aria-expanded="false" aria-controls="nav" aria-label="Abrir o menu">
+        <svg class="menu-abrir"><use href="#i-menu"/></svg>
+        <svg class="menu-fechar"><use href="#i-fechar"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ============ ABERTURA ============ -->
+<section class="hero" id="inicio" aria-labelledby="hero-nome">
+  <div class="contentor hero__grelha">
+    <div class="hero__texto">
+      <p class="estado entrada" style="--i:0">
+        <span class="estado__ponto" aria-hidden="true"></span>
+        <span data-en="Open to internships and new projects">Disponível para estágio e novos projetos</span>
+      </p>
+      <h1 class="hero__nome" id="hero-nome">
+        <span class="entrada" style="--i:1">Tomás</span>
+        <span class="entrada" style="--i:2">Ferreira<span class="ponto">.</span></span>
+      </h1>
+      <p class="hero__lema entrada" style="--i:3" data-en="I design and build for the web with a <em>soft spot for detail</em>.">Desenho e programo para&nbsp;a&nbsp;web com <em>gosto pelo pormenor</em>.</p>
+      <p class="hero__intro entrada" style="--i:4" data-en="I'm a final-year Informatics and Computing Engineering student at FEUP, in Porto. I care about the web end to end: the interface everyone sees and everything that makes it run behind the scenes.">Sou finalista de Engenharia Informática e Computação na FEUP, no Porto. Interessa-me a web de ponta a ponta: a interface que toda a gente vê e tudo o que a faz funcionar por trás.</p>
+      <div class="hero__acoes entrada" style="--i:5">
+        <a class="botao" href="#projetos"><span data-en="See my work">Ver projetos</span><svg><use href="#i-baixo"/></svg></a>
+        <a class="botao botao--fantasma" href="#contacto" data-en="Get in touch">Falar comigo</a>
+      </div>
+      <ul class="redes entrada" style="--i:6" aria-label="Ligações" data-en-aria-label="Links">
+        <li><a href="https://github.com/tomasrferreira" target="_blank" rel="noopener" aria-label="GitHub (abre num novo separador)" data-en-aria-label="GitHub (opens in a new tab)"><svg><use href="#i-github"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/tomasgrferreira" target="_blank" rel="noopener" aria-label="LinkedIn (abre num novo separador)" data-en-aria-label="LinkedIn (opens in a new tab)"><svg><use href="#i-linkedin"/></svg></a></li>
+        <li><a href="mailto:tomas.r.ferreira@hotmail.com" aria-label="Enviar email" data-en-aria-label="Send an email"><svg><use href="#i-mail"/></svg></a></li>
+      </ul>
+    </div>
+
+    <figure class="ficha entrada" style="--i:3" role="img"
+      aria-label="Ficha: Tomás Gonçalves Ribeiro Ferreira, 25 anos, de Vila do Conde, finalista de L.EIC na FEUP. Gosta de desenvolvimento web, de ponta a ponta. Nadador-salvador. Disponível para estágio e projetos."
+      data-en-aria-label="Spec sheet: Tomás Gonçalves Ribeiro Ferreira, 25, from Vila do Conde, final-year L.EIC student at FEUP. Likes web development, end to end. Certified lifeguard. Available for internships and projects.">
+      <div class="ficha__barra">
+        <span class="luzes"><i></i><i></i><i></i></span>
+        <span class="ficha__ficheiro">tomas.h</span>
+        <span class="ficha__lingua">C</span>
+      </div>
+<pre class="ficha__codigo"><code data-so-idioma="pt"><span class="l"><span class="c">// tomas.h · ficha técnica</span></span>
+<span class="l"><span class="k">struct</span> <span class="t">programador</span> tomas = {</span>
+<span class="l">    <span class="p">.nome</span>   = <span class="s">"Tomás Gonçalves Ribeiro Ferreira"</span>,</span>
+<span class="l">    <span class="p">.idade</span>  = <span class="n">25</span>,</span>
+<span class="l">    <span class="p">.terra</span>  = <span class="s">"Vila do Conde, PT"</span>,</span>
+<span class="l">    <span class="p">.curso</span>  = <span class="s">"L.EIC @ FEUP"</span>,</span>
+<span class="l">    <span class="p">.gosta</span>  = <span class="s">"web, de ponta a ponta"</span>,</span>
+<span class="l">    <span class="p">.extra</span>  = <span class="s">"nadador-salvador"</span>,</span>
+<span class="l">    <span class="p">.estado</span> = <span class="m">DISPONIVEL</span>, <span class="c">/* estágio, projetos */</span></span>
+<span class="l">};<span class="cursor-texto" aria-hidden="true"></span></span></code><code data-so-idioma="en" hidden><span class="l"><span class="c">// tomas.h · spec sheet</span></span>
+<span class="l"><span class="k">struct</span> <span class="t">developer</span> tomas = {</span>
+<span class="l">    <span class="p">.name</span>   = <span class="s">"Tomás Gonçalves Ribeiro Ferreira"</span>,</span>
+<span class="l">    <span class="p">.age</span>    = <span class="n">25</span>,</span>
+<span class="l">    <span class="p">.home</span>   = <span class="s">"Vila do Conde, PT"</span>,</span>
+<span class="l">    <span class="p">.degree</span> = <span class="s">"L.EIC @ FEUP"</span>,</span>
+<span class="l">    <span class="p">.likes</span>  = <span class="s">"the web, end to end"</span>,</span>
+<span class="l">    <span class="p">.extra</span>  = <span class="s">"certified lifeguard"</span>,</span>
+<span class="l">    <span class="p">.status</span> = <span class="m">AVAILABLE</span>, <span class="c">/* internship, projects */</span></span>
+<span class="l">};<span class="cursor-texto" aria-hidden="true"></span></span></code></pre>
+    </figure>
+  </div>
+
+  <div class="faixa" aria-hidden="true">
+    <div class="faixa__pista">
+      <ul><li>C</li><li>C++</li><li>Python</li><li>JavaScript</li><li>HTML</li><li>CSS</li><li>PHP</li><li>SQL</li><li>Laravel</li><li>PostgreSQL</li><li>SQLite</li><li>Docker</li><li>Git</li><li>MINIX</li></ul>
+      <ul><li>C</li><li>C++</li><li>Python</li><li>JavaScript</li><li>HTML</li><li>CSS</li><li>PHP</li><li>SQL</li><li>Laravel</li><li>PostgreSQL</li><li>SQLite</li><li>Docker</li><li>Git</li><li>MINIX</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJETOS ============ -->
+<section class="seccao" id="projetos" aria-labelledby="projetos-titulo">
+  <div class="contentor">
+    <header class="seccao__cabeca revela">
+      <p class="rotulo"><span class="rotulo__num">01</span><span data-en="Work">Projetos</span></p>
+      <h2 id="projetos-titulo" data-en="Things I've <em>built</em>">Coisas que <em>construí</em></h2>
+      <p class="seccao__sub" data-en="The first two have video: hover over them to see them in action. Further down, other projects from my degree.">Os dois primeiros têm vídeo: passe o cursor por cima para os ver a funcionar. Mais abaixo, outros projetos do curso.</p>
+    </header>
+
+    <!-- 01 · PLASTIC CLUB -->
+    <article class="projeto projeto--plastic revela" id="plastic-club" aria-labelledby="plastic-titulo">
+      <!-- plasticclub.pt ainda não está no ar: o cartão abre o caso de estudo. Quando o site
+           estiver no ar, voltar a ser <a href="https://plasticclub.pt" target="_blank" rel="noopener">
+           e tirar o hidden aos dois «Visitar o site» (aqui e no fim do caso). -->
+      <button type="button" class="projeto__media" data-video-grupo data-abrir="caso-plastic"
+         data-cursor="Ver como foi feito" data-en-data-cursor="See how it was made"
+         aria-label="Ver como foi feito o site do Plastic Club" data-en-aria-label="See how the Plastic Club website was made">
+        <span class="browser">
+          <span class="browser__barra" aria-hidden="true">
+            <span class="luzes"><i></i><i></i><i></i></span>
+            <span class="browser__url"><svg><use href="#i-cadeado"/></svg>plasticclub.pt</span>
+          </span>
+          <span class="ecra ecra--16x10">
+            <img src="assets/media/plastic-desktop.webp" alt="" width="1280" height="800" loading="lazy" decoding="async">
+            <video data-src="assets/media/plastic-desktop.mp4" muted loop playsinline preload="none" width="1280" height="800" aria-hidden="true"></video>
+          </span>
+        </span>
+        <span class="telemovel" aria-hidden="true">
+          <span class="ecra ecra--telemovel">
+            <img src="assets/media/plastic-mobile.webp" alt="" width="480" height="1038" loading="lazy" decoding="async">
+            <video data-src="assets/media/plastic-mobile.mp4" muted loop playsinline preload="none" width="480" height="1038"></video>
+          </span>
+        </span>
+        <span class="media__dica" aria-hidden="true"><svg><use href="#i-play"/></svg><span data-en="Preview">Pré-visualizar</span></span>
+        <span class="media__progresso" aria-hidden="true"><i></i></span>
+      </button>
+
+      <div class="projeto__info">
+        <p class="projeto__meta"><span class="projeto__num">01</span><span data-en="2026 · Client project">2026 · Projeto para cliente</span></p>
+        <h3 class="projeto__titulo" id="plastic-titulo">Plastic Club</h3>
+        <p class="projeto__resumo" data-en="The website of a dining club and nightclub by the marina in Póvoa de Varzim. It introduces the dinners and the nights, shows the VIP booths on an interactive floor plan and sends bookings straight to WhatsApp.">O site de um dining club e discoteca junto à marina da Póvoa de Varzim. Dá a conhecer os jantares e a noite, mostra os camarotes numa planta interativa e encaminha as reservas para o WhatsApp.</p>
+        <ul class="destaques">
+          <li data-en="<strong>Two worlds, one address.</strong> The dinners and the nights each get their own page and their own mood.">
+            <strong>Dois mundos, uma morada.</strong> Os jantares e a noite têm páginas próprias, cada uma com o seu ambiente.</li>
+          <li data-en="<strong>Made for any screen.</strong> From phones to large monitors, the layout adapts without losing its identity.">
+            <strong>Pensado para qualquer ecrã.</strong> Do telemóvel ao monitor grande, o desenho adapta-se sem perder identidade.</li>
+          <li data-en="<strong>Booking in seconds.</strong> Every button opens WhatsApp with the message already written: just hit send.">
+            <strong>Reservas num instante.</strong> Cada botão abre o WhatsApp com a mensagem já escrita: basta enviar.</li>
+        </ul>
+        <ul class="etiquetas" aria-label="Tecnologias" data-en-aria-label="Technologies">
+          <li>HTML</li><li>CSS</li><li>JavaScript</li><li data-en="Local SEO">SEO local</li><li data-en="Accessibility">Acessibilidade</li>
+        </ul>
+        <div class="projeto__acoes">
+          <a class="botao" href="https://plasticclub.pt" target="_blank" rel="noopener" hidden><span data-en="Visit the site">Visitar o site</span><svg><use href="#i-seta"/></svg></a>
+          <button type="button" class="botao" data-abrir="caso-plastic"><span data-en="How it was made">Como foi feito</span><svg><use href="#i-direita"/></svg></button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 · PLANTS VS. ZOMBIES -->
+    <article class="projeto projeto--pvz projeto--inverso revela" id="plants-vs-zombies" aria-labelledby="pvz-titulo">
+      <button type="button" class="projeto__media" data-video-grupo data-abrir="caso-pvz" data-tocar
+         data-cursor="Ver a demo completa" data-en-data-cursor="Watch the full demo"
+         aria-label="Ver a demo completa do Plants vs. Zombies" data-en-aria-label="Watch the full Plants vs. Zombies demo">
+        <span class="janela">
+          <span class="janela__barra" aria-hidden="true">
+            <span class="luzes"><i></i><i></i><i></i></span>
+            <span class="janela__titulo">minix 3 · lcom/proj</span>
+          </span>
+          <span class="ecra ecra--4x3">
+            <img src="assets/media/pvz-loop.webp" alt="" width="800" height="600" loading="lazy" decoding="async">
+            <video data-src="assets/media/pvz-loop.mp4" muted loop playsinline preload="none" width="800" height="600" aria-hidden="true"></video>
+          </span>
+        </span>
+        <span class="irqs" aria-hidden="true">
+          <span style="--v:.5s"><i></i>IRQ 0<small>timer</small></span>
+          <span style="--v:1.3s"><i></i>IRQ 1<small data-en="keyboard">teclado</small></span>
+          <span style="--v:.35s"><i></i>IRQ 12<small data-en="mouse">rato</small></span>
+          <span style="--v:.9s"><i></i>VBE<small data-en="video">vídeo</small></span>
+          <span style="--v:3s"><i></i>RTC<small data-en="clock">relógio</small></span>
+        </span>
+        <span class="media__dica" aria-hidden="true"><svg><use href="#i-play"/></svg><span data-en="Preview">Pré-visualizar</span></span>
+        <span class="media__progresso" aria-hidden="true"><i></i></span>
+      </button>
+
+      <div class="projeto__info">
+        <p class="projeto__meta"><span class="projeto__num">02</span><span data-en="2026 · Academic project · LCOM, FEUP">2026 · Projeto académico · LCOM, FEUP</span></p>
+        <h3 class="projeto__titulo" id="pvz-titulo">Plants vs. Zombies</h3>
+        <p class="projeto__resumo" data-en="A complete game, written in C and running on MINIX. The team wrote the drivers for the keyboard, mouse, timer, graphics card and clock from scratch, and every frame is drawn pixel by pixel.">Um jogo completo, escrito em C, a correr em MINIX. A equipa escreveu de raiz os drivers do teclado, do rato, do timer, da placa gráfica e do relógio, e cada imagem é desenhada píxel a píxel.</p>
+        <ul class="destaques">
+          <li data-en="<strong>Driven by interrupts.</strong> The game never sits waiting: the hardware tells it when there's work to do.">
+            <strong>Movido a interrupções.</strong> O jogo nunca fica à espera: é o hardware que o avisa quando há trabalho a fazer.</li>
+          <li data-en="<strong>My part:</strong> the menu and the plant selection, the five zombie waves, the lawnmowers and the victory and defeat screens.">
+            <strong>A minha parte:</strong> o menu e a escolha das plantas, as cinco rondas de zombies, os <span class="inteiro">corta-relvas</span> e os ecrãs de vitória e derrota.</li>
+          <li data-en="<strong>Mouse or keyboard.</strong> The whole game can be played with either.">
+            <strong>Rato ou teclado.</strong> O jogo inteiro joga-se com qualquer um dos dois.</li>
+        </ul>
+        <dl class="numeros">
+          <div><dt data-en="devices">dispositivos</dt><dd>5</dd></div>
+          <div><dt data-en="plants">plantas</dt><dd>7</dd></div>
+          <div><dt data-en="waves">rondas</dt><dd>5</dd></div>
+          <div><dt data-en="team">equipa</dt><dd>4</dd></div>
+        </dl>
+        <ul class="etiquetas" aria-label="Tecnologias" data-en-aria-label="Technologies">
+          <li>C</li><li>MINIX</li><li>Drivers</li><li data-en="Interrupts">Interrupções</li><li>Double buffering</li>
+        </ul>
+        <div class="projeto__acoes">
+          <button type="button" class="botao" data-abrir="caso-pvz" data-tocar><svg><use href="#i-play"/></svg><span data-en="Watch the full demo">Ver a demo completa</span></button>
+          <button type="button" class="botao botao--fantasma" data-abrir="caso-pvz" data-foco="pvz-arquitetura"><span data-en="How it works">Como funciona</span><svg><use href="#i-direita"/></svg></button>
+        </div>
+      </div>
+    </article>
+
+    <!-- OUTROS PROJETOS -->
+    <div class="outros revela">
+      <h3 class="outros__titulo" data-en="More from the degree">Mais do curso</h3>
+      <ul class="lista">
+        <li class="item">
+          <button type="button" class="item__cabeca" aria-expanded="false" aria-controls="item-quickbid">
+            <span class="item__num">03</span>
+            <span class="item__nome">QuickBid<small data-en="Online auction platform">Plataforma web de leilões</small></span>
+            <span class="item__uc">LBAW · FEUP</span>
+            <span class="item__stack">PHP · Laravel · PostgreSQL</span>
+            <span class="item__icone" aria-hidden="true"><svg><use href="#i-mais"/></svg></span>
+          </button>
+          <div class="item__corpo" id="item-quickbid" inert>
+            <div class="item__dentro">
+              <p data-en="An online auction app in Laravel and PostgreSQL, built as a team. I was responsible for the admin area: account management and the permissions of each type of user.">Uma aplicação de leilões online em Laravel e PostgreSQL, feita em equipa. Fiquei com a área de administração: a gestão de contas e as permissões de cada tipo de utilizador.</p>
+              <p class="item__extra"><span data-en="Course unit: Database and Web Application Laboratory">Unidade curricular: Laboratório de Bases de Dados e Aplicações Web</span> · PHP · Laravel · PostgreSQL · Docker · JavaScript</p>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <button type="button" class="item__cabeca" aria-expanded="false" aria-controls="item-voos">
+            <span class="item__num">04</span>
+            <span class="item__nome"><span data-en="Global flight network">Rede global de voos</span><small data-en="Graphs in C++">Grafos em C++</small></span>
+            <span class="item__uc">AED · FEUP</span>
+            <span class="item__stack">C++ · STL</span>
+            <span class="item__icone" aria-hidden="true"><svg><use href="#i-mais"/></svg></span>
+          </button>
+          <div class="item__corpo" id="item-voos" inert>
+            <div class="item__dentro">
+              <p data-en="Airports, airlines and flights from all over the world modelled as a graph, with itinerary search and reachability metrics. A team project on data structures and algorithms.">Aeroportos, companhias aéreas e voos de todo o mundo modelados como um grafo, com pesquisa de itinerários e métricas de alcance. Um projeto de equipa sobre estruturas de dados e algoritmos.</p>
+              <p class="item__extra"><span data-en="Course unit: Algorithms and Data Structures">Unidade curricular: Algoritmos e Estruturas de Dados</span> · <a href="https://github.com/tomasrferreira/AED2324_PRJ2_G117" target="_blank" rel="noopener"><span data-en="Code on GitHub">Código no GitHub</span><svg><use href="#i-seta"/></svg></a></p>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <button type="button" class="item__cabeca" aria-expanded="false" aria-controls="item-tickets">
+            <span class="item__num">05</span>
+            <span class="item__nome">Ticket Tracker<small data-en="Support ticket management">Gestão de tickets de apoio</small></span>
+            <span class="item__uc">LTW · FEUP</span>
+            <span class="item__stack">HTML · CSS · PHP · SQLite</span>
+            <span class="item__icone" aria-hidden="true"><svg><use href="#i-mais"/></svg></span>
+          </button>
+          <div class="item__corpo" id="item-tickets" inert>
+            <div class="item__dentro">
+              <p data-en="A support ticket system that sends each request to the right department, with reply panels for the agents. The interface was built from scratch, in semantic HTML and responsive CSS.">Um sistema de tickets de apoio que encaminha cada pedido para o departamento certo, com painéis de resposta para os agentes. A interface foi feita de raiz, em HTML semântico e CSS responsivo.</p>
+              <p class="item__extra"><span data-en="Course unit: Web Languages and Technologies">Unidade curricular: Linguagens e Tecnologias Web</span> · <span data-en="Team project">Projeto em equipa</span></p>
+            </div>
+          </div>
+        </li>
+        <li class="item">
+          <button type="button" class="item__cabeca" aria-expanded="false" aria-controls="item-svg">
+            <span class="item__num">06</span>
+            <span class="item__nome"><span data-en="SVG → PNG converter">Conversor SVG → PNG</span><small data-en="SVG interpreter">Interpretador de SVG</small></span>
+            <span class="item__uc">PROG · FEUP</span>
+            <span class="item__stack">C++</span>
+            <span class="item__icone" aria-hidden="true"><svg><use href="#i-mais"/></svg></span>
+          </button>
+          <div class="item__corpo" id="item-svg" inert>
+            <div class="item__dentro">
+              <p data-en="It reads SVG files (ellipses, circles, lines, polylines, polygons, rectangles and groups with transformations) and draws the final image as a PNG.">Lê ficheiros SVG (elipses, círculos, linhas, polilinhas, polígonos, retângulos e grupos com transformações) e desenha a imagem final em PNG.</p>
+              <p class="item__extra"><span data-en="Course unit: Programming">Unidade curricular: Programação</span> · <a href="https://github.com/tomasrferreira/project1_PROG23-24" target="_blank" rel="noopener"><span data-en="Code on GitHub">Código no GitHub</span><svg><use href="#i-seta"/></svg></a></p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="seccao seccao--alt" id="sobre" aria-labelledby="sobre-titulo">
+  <div class="contentor">
+    <header class="seccao__cabeca revela">
+      <p class="rotulo"><span class="rotulo__num">02</span><span data-en="About">Sobre</span></p>
+      <h2 id="sobre-titulo" data-en="Engineering with a <em>cool head</em>">Engenharia de <em>cabeça fria</em></h2>
+    </header>
+
+    <div class="sobre">
+      <div class="sobre__texto revela">
+        <p class="sobre__abertura" data-en="My name is Tomás Gonçalves Ribeiro Ferreira. I'm 25, from Vila do Conde, and in the final year of the Bachelor's in Informatics and Computing Engineering (L.EIC) at the Faculty of Engineering of the University of Porto.">Chamo-me Tomás Gonçalves Ribeiro Ferreira, tenho 25 anos e sou de Vila do Conde. Estou no último ano da Licenciatura em Engenharia Informática e Computação (L.EIC), na Faculdade de Engenharia da Universidade do Porto.</p>
+        <p data-en="During my degree I worked on web development, systems programming and algorithms. The web is where I feel at home, on both sides: I enjoy building the interface as much as making everything behind it work. Full stack, in other words. Still, I don't limit myself to one area: a good challenge interests me, whatever the technology.">No curso passei pelo desenvolvimento web, pela programação de sistemas e pela algoritmia. É na web que me sinto em casa, dos dois lados: gosto tanto de construir a interface como de pôr a funcionar o que está por trás. Full stack, portanto. Ainda assim, não me fecho numa área: um bom desafio interessa-me, seja qual for a tecnologia.</p>
+        <p data-en="Away from the keyboard, I've been a certified lifeguard for six years and a competitive swimmer for ten. On the beach you learn to decide with little information and to stay calm when things get complicated. That's what I bring to a team.">Fora do teclado, sou nadador-salvador certificado há seis anos e nadador federado há dez. Na praia aprende-se a decidir com pouca informação e a manter a calma quando as coisas se complicam. É isso que levo para uma equipa.</p>
+      </div>
+
+      <dl class="factos revela">
+        <div><dt data-en="Name">Nome</dt><dd>Tomás Gonçalves Ribeiro Ferreira</dd></div>
+        <div><dt data-en="Age">Idade</dt><dd data-en="25">25 anos</dd></div>
+        <div><dt data-en="Based in">Localização</dt><dd>Vila do Conde, Portugal</dd></div>
+        <div><dt data-en="Degree">Formação</dt><dd data-en="L.EIC · FEUP, since 2021">L.EIC · FEUP, desde 2021</dd></div>
+        <div><dt data-en="Looking for">Procuro</dt><dd data-en="Internship (Integrative Project) and web projects">Estágio (Projeto Integrador) e projetos web</dd></div>
+        <div><dt data-en="Languages">Línguas</dt><dd data-en="Portuguese (native) · English (intermediate)">Português (nativo) · Inglês (intermédio)</dd></div>
+        <div><dt data-en="Also">Também</dt><dd data-en="Lifeguard (ISN) · Driving licence (B)">Nadador-salvador (ISN) · Carta de condução (B)</dd></div>
+      </dl>
+    </div>
+
+    <div class="percurso revela">
+      <h3 class="percurso__titulo" data-en="Timeline">Percurso</h3>
+      <ol class="linha-tempo">
+        <li>
+          <span class="linha-tempo__ano">2026</span>
+          <div><p class="linha-tempo__o-que" data-en="Plastic Club website">Site do Plastic Club</p>
+          <p class="linha-tempo__onde" data-en="Design and development, from the first sketch to the WhatsApp bookings">Design e desenvolvimento, do primeiro esboço às reservas por WhatsApp</p></div>
+        </li>
+        <li>
+          <span class="linha-tempo__ano">2026</span>
+          <div><p class="linha-tempo__o-que" data-en="Plants vs. Zombies on MINIX">Plants vs. Zombies em MINIX</p>
+          <p class="linha-tempo__onde" data-en="Computer Laboratory (LCOM), FEUP · team of four">Laboratório de Computadores (LCOM), FEUP · equipa de quatro</p></div>
+        </li>
+        <li>
+          <span class="linha-tempo__ano">2022</span>
+          <div><p class="linha-tempo__o-que">Essential Project Management for Students</p>
+          <p class="linha-tempo__onde" data-en="APGEI · 8-hour course">APGEI · curso de 8 h</p></div>
+        </li>
+        <li>
+          <span class="linha-tempo__ano">2021</span>
+          <div><p class="linha-tempo__o-que" data-en="Bachelor's in Informatics and Computing Engineering">Licenciatura em Engenharia Informática e Computação</p>
+          <p class="linha-tempo__onde" data-en="Faculty of Engineering, University of Porto (FEUP)">Faculdade de Engenharia da Universidade do Porto (FEUP)</p></div>
+        </li>
+        <li>
+          <span class="linha-tempo__ano" data-en="Since 2021">Desde 2021</span>
+          <div><p class="linha-tempo__o-que" data-en="Certified lifeguard (ISN)">Nadador-salvador certificado (ISN)</p>
+          <p class="linha-tempo__onde" data-en="Os Golfinhos · beaches of Vila do Conde and Póvoa de Varzim">Os Golfinhos · praias de Vila do Conde e Póvoa de Varzim</p></div>
+        </li>
+        <li>
+          <span class="linha-tempo__ano" data-en="Since 2016">Desde 2016</span>
+          <div><p class="linha-tempo__o-que" data-en="Competitive swimmer">Atleta federado de natação</p>
+          <p class="linha-tempo__onde" data-en="Clube Fluvial Vilacondense · now competing in Masters at national championships">Clube Fluvial Vilacondense · atualmente em Masters, em campeonatos nacionais</p></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPETÊNCIAS ============ -->
+<section class="seccao" id="competencias" aria-labelledby="competencias-titulo">
+  <div class="contentor">
+    <header class="seccao__cabeca revela">
+      <p class="rotulo"><span class="rotulo__num">03</span><span data-en="Skills">Competências</span></p>
+      <h2 id="competencias-titulo" data-en="Tools of the <em>trade</em>">Ferramentas do <em>ofício</em></h2>
+      <p class="seccao__sub" data-en="Hover over (or tap) a skill to see where I used it.">Passe o cursor (ou toque) numa competência para ver onde a usei.</p>
+    </header>
+
+    <div class="competencias">
+      <div class="grupo revela">
+        <h3 class="grupo__titulo"><span class="grupo__num">a</span><span data-en="Languages">Linguagens</span></h3>
+        <ul class="chips">
+          <li><button type="button" class="chip">C<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plants vs. Zombies</span></button></li>
+          <li><button type="button" class="chip">C++<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span><span data-en="Flight network · SVG converter">Rede de voos · Conversor SVG</span></span></button></li>
+          <li><span class="chip chip--simples">Python</span></li>
+          <li><button type="button" class="chip">JavaScript<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plastic Club · QuickBid</span></button></li>
+          <li><button type="button" class="chip">HTML<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plastic Club · Ticket Tracker</span></button></li>
+          <li><button type="button" class="chip">CSS<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plastic Club · Ticket Tracker</span></button></li>
+          <li><button type="button" class="chip">PHP<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>QuickBid · Ticket Tracker</span></button></li>
+          <li><button type="button" class="chip">SQL<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>QuickBid · Ticket Tracker</span></button></li>
+        </ul>
+      </div>
+      <div class="grupo revela">
+        <h3 class="grupo__titulo"><span class="grupo__num">b</span><span data-en="Technologies">Tecnologias</span></h3>
+        <ul class="chips">
+          <li><button type="button" class="chip">Laravel<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>QuickBid</span></button></li>
+          <li><button type="button" class="chip">PostgreSQL<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>QuickBid</span></button></li>
+          <li><button type="button" class="chip">SQLite<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Ticket Tracker</span></button></li>
+          <li><button type="button" class="chip">Docker<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>QuickBid</span></button></li>
+          <li><span class="chip chip--simples">Git</span></li>
+          <li><button type="button" class="chip">MINIX<span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plants vs. Zombies</span></button></li>
+        </ul>
+      </div>
+      <div class="grupo revela">
+        <h3 class="grupo__titulo"><span class="grupo__num">c</span><span data-en="Web best practices">Boas práticas web</span></h3>
+        <ul class="chips">
+          <li><button type="button" class="chip"><span data-en="Responsive design">Design responsivo</span><span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plastic Club · Ticket Tracker</span></button></li>
+          <li><button type="button" class="chip"><span data-en="Accessibility">Acessibilidade</span><span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plastic Club</span></button></li>
+          <li><button type="button" class="chip"><span data-en="Technical SEO">SEO técnico</span><span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plastic Club</span></button></li>
+          <li><button type="button" class="chip"><span data-en="Web performance">Desempenho web</span><span class="chip__dica"><span class="chip__rotulo" data-en="Used in">Onde usei</span>Plastic Club</span></button></li>
+        </ul>
+      </div>
+      <div class="grupo revela">
+        <h3 class="grupo__titulo"><span class="grupo__num">d</span><span data-en="Personal">Pessoais</span></h3>
+        <ul class="chips">
+          <li><button type="button" class="chip"><span data-en="Decisions under pressure">Decisão sob pressão</span><span class="chip__dica"><span data-en="Six seasons as a lifeguard">Seis épocas como nadador-salvador</span></span></button></li>
+          <li><button type="button" class="chip"><span data-en="Responsibility for others">Responsabilidade por terceiros</span><span class="chip__dica"><span data-en="Lifeguard on Vila do Conde beaches">Nadador-salvador nas praias de Vila do Conde</span></span></button></li>
+          <li><button type="button" class="chip"><span data-en="Teamwork">Coordenação em equipa</span><span class="chip__dica"><span data-en="Team projects · beach team">Projetos em equipa · equipa de praia</span></span></button></li>
+          <li><button type="button" class="chip"><span data-en="Rigour">Rigor</span><span class="chip__dica"><span data-en="Ten seasons of daily training">Dez épocas de treino diário</span></span></button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="seccao contacto" id="contacto" aria-labelledby="contacto-titulo">
+  <div class="contentor">
+    <p class="rotulo revela"><span class="rotulo__num">04</span><span data-en="Contact">Contacto</span></p>
+    <h2 class="contacto__titulo revela" id="contacto-titulo" data-en="Let's <em>talk.</em>">Vamos <em>falar.</em></h2>
+    <p class="contacto__texto revela" data-en="I'm looking for an internship for my degree's Integrative Project and I'm available for web projects. The quickest way to reach me is by email.">Procuro estágio para o Projeto Integrador da licenciatura e estou disponível para projetos web. A forma mais rápida de me contactar é por email.</p>
+
+    <div class="email revela">
+      <a class="email__ligacao" href="mailto:tomas.r.ferreira@hotmail.com">tomas.r.ferreira<wbr>@hotmail.com</a>
+      <button type="button" class="icone-botao email__copiar" data-copiar="tomas.r.ferreira@hotmail.com" aria-label="Copiar o email" data-en-aria-label="Copy email address">
+        <svg class="copiar"><use href="#i-copiar"/></svg><svg class="copiado"><use href="#i-certo"/></svg>
+      </button>
+    </div>
+
+    <ul class="contactos revela">
+      <li><a href="https://www.linkedin.com/in/tomasgrferreira" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg><span>LinkedIn</span><small>/in/tomasgrferreira</small><svg class="seta"><use href="#i-seta"/></svg></a></li>
+      <li><a href="https://github.com/tomasrferreira" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg><span>GitHub</span><small>@tomasrferreira</small><svg class="seta"><use href="#i-seta"/></svg></a></li>
+      <li><a href="assets/cv/CV_Tomas_Ferreira_PT.pdf" download><svg><use href="#i-download"/></svg><span data-en="CV in Portuguese">CV em português</span><small>PDF · 260 KB</small><svg class="seta"><use href="#i-baixo"/></svg></a></li>
+      <li><a href="assets/cv/CV_Tomas_Ferreira_EN.pdf" download><svg><use href="#i-download"/></svg><span data-en="CV in English">CV em inglês</span><small>PDF · 245 KB</small><svg class="seta"><use href="#i-baixo"/></svg></a></li>
+    </ul>
+
+    <p class="relogio revela"><span class="estado__ponto" aria-hidden="true"></span>Vila do Conde · <time data-relogio>00:00</time> <span data-en="local time">hora local</span></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="contentor rodape__in">
+    <p>© 2026 Tomás Ferreira</p>
+    <p class="rodape__lema" data-en="One commit at a time.">Um commit de cada vez.</p>
+    <a class="rodape__topo" href="#inicio"><span data-en="Back to top">Voltar ao topo</span><svg><use href="#i-cima"/></svg></a>
+  </div>
+</footer>
+
+<!-- ============ CASO: PLASTIC CLUB ============ -->
+<dialog class="caso caso--plastic" id="caso-plastic" aria-labelledby="caso-plastic-titulo">
+  <div class="caso__in">
+    <header class="caso__topo">
+      <div>
+        <p class="rotulo" data-en="Case study · Client project">Caso de estudo · Projeto para cliente</p>
+        <h2 id="caso-plastic-titulo">Plastic Club</h2>
+      </div>
+      <button type="button" class="icone-botao caso__fechar" data-fechar aria-label="Fechar" data-en-aria-label="Close"><svg><use href="#i-fechar"/></svg></button>
+    </header>
+
+    <div class="leitores">
+      <figure class="leitor leitor--secretaria">
+        <video controls playsinline muted loop preload="none" poster="assets/media/plastic-desktop.webp" data-src="assets/media/plastic-desktop.mp4" width="1280" height="800"></video>
+        <figcaption data-en="Desktop · 1440 px">Computador · 1440 px</figcaption>
+      </figure>
+      <figure class="leitor leitor--telemovel">
+        <video controls playsinline muted loop preload="none" poster="assets/media/plastic-mobile.webp" data-src="assets/media/plastic-mobile.mp4" width="480" height="1038"></video>
+        <figcaption data-en="Phone · 390 px">Telemóvel · 390 px</figcaption>
+      </figure>
+    </div>
+
+    <dl class="ficha-tecnica">
+      <div><dt data-en="Client">Cliente</dt><dd data-en="Plastic Club, a dining club and nightclub in Póvoa de Varzim">Plastic Club, dining club e discoteca na Póvoa de Varzim</dd></div>
+      <div><dt data-en="Year">Ano</dt><dd>2026</dd></div>
+      <div><dt data-en="Role">Papel</dt><dd data-en="Web design and development">Design web e desenvolvimento</dd></div>
+      <div><dt data-en="Stack">Tecnologia</dt><dd data-en="HTML, CSS and JavaScript">HTML, CSS e JavaScript</dd></div>
+    </dl>
+
+    <section class="caso__bloco">
+      <h3 data-en="The brief">O ponto de partida</h3>
+      <p data-en="One venue with two personalities: dinner first, the club later. The challenge was to present both worlds without blending them, to get visitors booking in just a few steps, and to hand the client a site they could look after on their own.">Um espaço com duas personalidades: primeiro o jantar, mais tarde a discoteca. O desafio era apresentar os dois mundos sem os misturar, levar quem visita o site a reservar em poucos passos e entregar ao cliente um site que ele próprio conseguisse manter.</p>
+    </section>
+
+    <section class="caso__bloco">
+      <h3 data-en="What the site does">O que o site faz</h3>
+      <ol class="decisoes">
+        <li><strong data-en="Two worlds, one address">Dois mundos, uma morada</strong><span data-en="Dinner and the nights each have their own page, with different photographs and pace but the same visual language.">Os jantares e a noite têm páginas próprias, com fotografias e ritmo diferentes, mas a mesma linguagem visual.</span></li>
+        <li><strong data-en="Booking in a few taps">Reservar em poucos toques</strong><span data-en="No forms: every button opens WhatsApp with the message already written, ready to send.">Não há formulários: cada botão abre o WhatsApp com a mensagem já escrita, pronta a enviar.</span></li>
+        <li><strong data-en="The room at a glance">A sala à vista</strong><span data-en="An interactive floor plan shows where each VIP booth is, how many people it takes and what's included.">Uma planta interativa mostra onde fica cada camarote, quantas pessoas leva e o que inclui.</span></li>
+        <li><strong data-en="Light and easy to look after">Leve e fácil de manter</strong><span data-en="It loads fast and goes live in minutes, without depending on anyone.">Abre depressa e publica-se em minutos, sem depender de ninguém.</span></li>
+      </ol>
+    </section>
+
+    <div class="caso__fim" hidden>
+      <a class="botao" href="https://plasticclub.pt" target="_blank" rel="noopener"><span data-en="Visit the site">Visitar o site</span><svg><use href="#i-seta"/></svg></a>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ CASO: PLANTS VS. ZOMBIES ============ -->
+<dialog class="caso caso--pvz" id="caso-pvz" aria-labelledby="caso-pvz-titulo">
+  <div class="caso__in">
+    <header class="caso__topo">
+      <div>
+        <p class="rotulo" data-en="Case study · LCOM, FEUP">Caso de estudo · LCOM, FEUP</p>
+        <h2 id="caso-pvz-titulo">Plants vs. Zombies <span data-en="on MINIX">em MINIX</span></h2>
+      </div>
+      <button type="button" class="icone-botao caso__fechar" data-fechar aria-label="Fechar" data-en-aria-label="Close"><svg><use href="#i-fechar"/></svg></button>
+    </header>
+
+    <div class="leitor leitor--jogo">
+      <video controls playsinline muted preload="none" poster="assets/media/pvz-demo.webp" data-src="assets/media/pvz-demo.mp4" width="800" height="600" data-capitulos="capitulos-pvz"></video>
+      <ol class="capitulos" id="capitulos-pvz" aria-label="Capítulos da demo" data-en-aria-label="Demo chapters">
+        <li><button type="button" data-t="0"><span>0:00</span><span data-en="Menu and “Last played” (RTC)">Menu e «Last played» (RTC)</span></button></li>
+        <li><button type="button" data-t="1.2"><span>0:01</span><span data-en="Choosing the plants">Escolha das plantas</span></button></li>
+        <li><button type="button" data-t="17"><span>0:17</span><span data-en="The game starts">Começa o jogo</span></button></li>
+        <li><button type="button" data-t="107"><span>1:47</span><span data-en="“Huge wave”">Ronda grande</span></button></li>
+        <li><button type="button" data-t="198.3"><span>3:18</span><span data-en="Final wave">Ronda final</span></button></li>
+        <li><button type="button" data-t="249.4"><span>4:09</span><span data-en="Victory">Vitória</span></button></li>
+      </ol>
+    </div>
+
+    <dl class="ficha-tecnica">
+      <div><dt data-en="Course unit">Unidade curricular</dt><dd data-en="Computer Laboratory (LCOM), FEUP">Laboratório de Computadores (LCOM), FEUP</dd></div>
+      <div><dt data-en="Year">Ano</dt><dd>2026</dd></div>
+      <div><dt data-en="Team">Equipa</dt><dd data-en="Four students">Quatro estudantes</dd></div>
+      <div><dt data-en="Stack">Tecnologia</dt><dd data-en="C, on MINIX">C, em MINIX</dd></div>
+    </dl>
+
+    <section class="caso__bloco">
+      <h3 data-en="The game">O jogo</h3>
+      <p data-en="A tower defence game inspired by Plants vs. Zombies: five lanes of lawn and zombies arriving in waves. Before each match you pick six plants, and during play you collect suns to pay for them. Each lane has a lawnmower that saves it once; the second time, it's game over.">Um tower defense inspirado no Plants vs. Zombies: cinco linhas de relva e zombies a chegar em rondas. Antes de cada partida escolhem-se seis plantas e, durante o jogo, apanham-se sóis para as pagar. Cada linha tem um <span class="inteiro">corta-relva</span> que a salva uma vez; à segunda, o jogo acaba.</p>
+    </section>
+
+    <section class="caso__bloco">
+      <h3 data-en="My part">A minha parte</h3>
+      <p data-en="I built four parts of the game, from start to finish:">Fiquei com quatro partes do jogo, do princípio ao fim:</p>
+      <ol class="decisoes">
+        <li><strong data-en="The menu and the plant selection">O menu e a escolha das plantas</strong><span data-en="From the menu, the player picks six plants out of seven, with the mouse (clicking or dragging each one into place) or with the keyboard alone. The game only starts once all six are chosen.">Do menu passa-se à escolha de seis plantas, entre sete, com o rato (a clicar ou a arrastar cada uma para o seu lugar) ou só com o teclado. O jogo só começa com as seis escolhidas.</span></li>
+        <li><strong data-en="The five waves">As cinco rondas</strong><span data-en="Each wave sets how many zombies arrive, how fast, and how likely they are to bring a cone or a pole. The first has 4 zombies and the last has 18; the third and the fifth are announced on screen.">Cada ronda define quantos zombies chegam, a que ritmo e com que probabilidade trazem cone ou vara. A primeira tem 4 zombies e a última tem 18; a terceira e a quinta são anunciadas no ecrã.</span></li>
+        <li><strong data-en="The lawnmowers">Os corta-relvas</strong><span data-en="One per lane, next to the house. When a zombie gets there, that lane's lawnmower starts and clears every zombie in its path. Once used, it doesn't come back.">Um por linha, junto à casa. Quando um zombie lá chega, o <span class="inteiro">corta-relva</span> dessa linha arranca e elimina todos os zombies que encontra. Depois de usado, não volta.</span></li>
+        <li><strong data-en="Victory and defeat">Vitória e derrota</strong><span data-en="The screens that end each match: victory after the fifth wave, defeat when a zombie gets through a lane with no lawnmower left. Both lead back to the menu.">Os ecrãs que fecham a partida: vitória depois da quinta ronda, derrota quando um zombie passa numa linha que já não tem <span class="inteiro">corta-relva</span>. De ambos se volta ao menu.</span></li>
+      </ol>
+    </section>
+
+    <section class="caso__bloco" id="pvz-arquitetura" tabindex="-1">
+      <h3 data-en="How it works">Como funciona</h3>
+      <p data-en="Every signal from the hardware (a key press, a click, a tick of the clock) goes through the game logic and ends up drawn on screen.">Cada sinal do hardware (uma tecla, um clique, um tique do relógio) passa pela lógica do jogo e acaba desenhado no ecrã.</p>
+      <ol class="arq">
+        <li class="arq__camada arq__camada--hw">
+          <p class="arq__nome" data-en="The devices">Os dispositivos</p>
+          <ul>
+            <li>Timer</li>
+            <li data-en="Keyboard">Teclado</li>
+            <li data-en="Mouse">Rato</li>
+            <li data-en="Graphics card">Placa gráfica</li>
+            <li data-en="Clock">Relógio</li>
+          </ul>
+        </li>
+        <li class="arq__camada">
+          <p class="arq__nome" data-en="The game">O jogo</p>
+          <ul>
+            <li data-en="Plants">Plantas</li>
+            <li>Zombies</li>
+            <li data-en="Waves">Rondas</li>
+            <li data-en="Suns">Sóis</li>
+            <li data-en="Lawnmowers">Corta-relvas</li>
+          </ul>
+        </li>
+        <li class="arq__camada arq__camada--ecra">
+          <p class="arq__nome" data-en="The screen">O ecrã</p>
+          <p class="arq__texto" data-en="Each frame is put together out of sight and only shows up once it's complete.">Cada imagem é montada fora de vista e só aparece quando está completa.</p>
+        </li>
+      </ol>
+    </section>
+  </div>
+</dialog>
+
+<div class="cursor-etiqueta" aria-hidden="true"><svg><use href="#i-seta"/></svg><span></span></div>
+<div class="aviso" role="status" aria-live="polite"></div>
+
+</body>
+</html>

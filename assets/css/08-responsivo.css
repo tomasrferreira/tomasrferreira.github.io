@@ -1,0 +1,103 @@
+/* ============================================================
+   08 RESPONSIVO
+   Do portátil pequeno ao telemóvel. O critério é a largura.
+   ============================================================ */
+
+@media (max-width:1080px){
+  .hero{min-height:auto}
+  .hero__grelha{grid-template-columns:minmax(0,1fr);gap:56px}
+  .ficha{justify-self:start;max-width:600px;--rx:0deg;--ry:0deg}
+  .ficha__codigo{font-size:13px}
+  .item__cabeca{grid-template-columns:40px minmax(0,1.5fr) minmax(0,.7fr) minmax(0,.9fr) 38px;gap:14px}
+}
+
+@media (max-width:960px){
+  .projeto,.projeto--inverso{grid-template-columns:minmax(0,1fr);gap:32px}
+  .projeto--inverso .projeto__media{order:0}
+  .sobre{grid-template-columns:minmax(0,1fr)}
+  .contactos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ficha-tecnica{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ficha-tecnica > div:nth-child(3){padding-left:0;border-left:0}
+  .ficha-tecnica > div:nth-child(n+3){border-top:1px solid var(--linha)}
+  .leitor--jogo{grid-template-columns:minmax(0,1fr)}
+  .capitulos{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* ---- menu do telemóvel ---- */
+@media (max-width:760px){
+  .topo__in{display:flex;justify-content:space-between}
+  .topo__menu{display:inline-grid}
+  .topo--menu{background:var(--fundo);border-bottom-color:var(--linha)}
+  .nav{
+    position:fixed;top:calc(var(--topo-alt) + 8px);left:var(--margem);right:var(--margem);
+    flex-direction:column;gap:2px;padding:8px;
+    border:1px solid var(--linha);border-radius:18px;background:var(--superficie);box-shadow:var(--sombra-grande);
+    opacity:0;visibility:hidden;translate:0 -10px;
+    transition:opacity .25s var(--ease),translate .35s var(--ease-out),visibility 0s .35s;
+  }
+  .topo--menu .nav{opacity:1;visibility:visible;translate:0 0;transition:opacity .25s var(--ease),translate .35s var(--ease-out)}
+  .nav a{padding:14px 16px;font-size:17px;border-radius:12px}
+  .nav a[aria-current="true"]::after{left:auto;right:18px;bottom:50%;margin:0 0 -2px}
+}
+
+@media (max-width:700px){
+  :root{--topo-alt:60px;--salto:24px}
+  /* rodapé: a frase numa linha só para ela, por cima do resto */
+  .rodape__in{grid-template-columns:1fr auto}
+  .rodape__lema{grid-column:1 / -1;grid-row:1}
+  .seccao__sub,.contacto__texto,.sobre__texto p{font-size:17px}
+  .hero__intro{font-size:16px}
+  .ficha__codigo{font-size:11.5px;padding:16px 16px 18px 0}
+  .ficha__codigo .l{padding-left:40px}
+  .ficha__codigo .l::before{width:26px}
+
+  .projeto__media{aspect-ratio:6/5}
+  .telemovel{width:24%}
+  .janela{left:10%;width:80%;top:8%}
+  .irqs{display:none}
+  .numeros dd{font-size:24px}
+  .numeros > div{padding-left:10px}
+
+  .item__cabeca{grid-template-columns:30px minmax(0,1fr) 36px;gap:12px;padding:20px 0}
+  .item__uc,.item__stack{display:none}
+  .item__dentro{padding-left:42px}
+  .item__cabeca:hover .item__nome{translate:4px 0}
+
+  .competencias{grid-template-columns:minmax(0,1fr)}
+  .grupo{padding:22px 20px 24px}
+  .linha-tempo li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .factos{padding:4px 18px}
+  .factos > div{grid-template-columns:90px minmax(0,1fr);gap:12px}
+
+  .caso{width:100%;max-height:100dvh;height:100dvh;border:0;border-radius:0}
+  .caso__in{max-height:100dvh;height:100%}
+  .leitores{grid-template-columns:minmax(0,1fr)}
+  .leitor--telemovel{max-width:240px}
+  .decisoes{grid-template-columns:minmax(0,1fr)}
+  .capitulos{grid-template-columns:minmax(0,1fr)}
+  .arq__camada{grid-template-columns:minmax(0,1fr);gap:10px}
+  .arq__camada + .arq__camada::before{left:28px}
+  .arq__camada + .arq__camada::after{left:26px}
+}
+
+@media (max-width:520px){
+  .hero__nome{font-size:clamp(58px,19vw,96px)}
+  .ficha__codigo{font-size:clamp(9.5px,2.6vw,11.5px);padding-right:12px}
+  .ficha__codigo .l{padding-left:32px}
+  .ficha__codigo .l::before{width:20px}
+  .contactos{grid-template-columns:minmax(0,1fr)}
+  .marca__nome{display:none}
+  .hero__acoes .botao{flex:1 1 auto}
+}
+
+@media (max-width:360px){
+  .ficha__codigo{padding-left:14px}
+  .ficha__codigo .l{padding-left:0}
+  .ficha__codigo .l::before{display:none}
+}
+
+@media (max-width:380px){
+  .topo__cv span{display:none}
+  .topo__cv{width:36px;padding:0}
+  .idioma button{padding:5px 7px}
+}
