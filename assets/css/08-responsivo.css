@@ -81,6 +81,9 @@
 }
 
 @media (max-width:520px){
+  /* a dica do botão parado alinha à esquerda, para não sair do ecrã */
+  .botao--em-breve::after{left:0;translate:0 6px}
+  .botao--em-breve:hover::after,.botao--em-breve:focus-visible::after{translate:0 0}
   .hero__nome{font-size:clamp(58px,19vw,96px)}
   .ficha__codigo{font-size:clamp(9.5px,2.6vw,11.5px);padding-right:12px}
   .ficha__codigo .l{padding-left:32px}

@@ -97,6 +97,20 @@ h1 em,h2 em,h3 em,.hero__lema em{
 .botao--pequeno{height:36px;padding:0 14px;font-size:14px;gap:6px}
 .botao--pequeno svg{width:15px;height:15px}
 
+/* botão ainda sem destino (o site do Plastic antes de ir para o ar): vê-se,
+   não se clica e, ao passar o cursor ou com o foco, explica porquê */
+.botao--em-breve{position:relative;background:transparent;color:var(--tinta-3);border-color:var(--linha-forte);border-style:dashed;cursor:not-allowed}
+.botao--em-breve:hover{background:transparent;border-color:var(--linha-forte);color:var(--tinta-3);translate:none;box-shadow:none}
+.botao--em-breve:hover svg{translate:none}
+.botao--em-breve::after{
+  content:attr(data-dica);position:absolute;left:50%;bottom:calc(100% + 10px);z-index:5;
+  padding:7px 12px;border-radius:10px;background:var(--tinta);color:var(--fundo);
+  font-size:13px;font-weight:500;letter-spacing:0;white-space:nowrap;
+  opacity:0;translate:-50% 6px;pointer-events:none;
+  transition:opacity .2s var(--ease),translate .25s var(--ease-out);
+}
+.botao--em-breve:hover::after,.botao--em-breve:focus-visible::after{opacity:1;translate:-50% 0}
+
 .icone-botao{
   display:inline-grid;place-items:center;width:40px;height:40px;flex:none;
   border-radius:999px;border:1px solid var(--linha);background:transparent;color:var(--tinta-2);

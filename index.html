@@ -208,9 +208,11 @@
 
     <!-- 01 · PLASTIC CLUB -->
     <article class="projeto projeto--plastic revela" id="plastic-club" aria-labelledby="plastic-titulo">
-      <!-- plasticclub.pt ainda não está no ar: o cartão abre o caso de estudo. Quando o site
-           estiver no ar, voltar a ser <a href="https://plasticclub.pt" target="_blank" rel="noopener">
-           e tirar o hidden aos dois «Visitar o site» (aqui e no fim do caso). -->
+      <!-- plasticclub.pt ainda não está no ar: o cartão abre o caso de estudo e os dois
+           «Visitar o site» (aqui e no fim do caso) estão parados, com a dica «Ainda em
+           desenvolvimento…». Quando o site estiver no ar: este cartão volta a ser
+           <a href="https://plasticclub.pt" target="_blank" rel="noopener"> e os dois botões
+           voltam a ser <a class="botao" href="https://plasticclub.pt" target="_blank" rel="noopener">. -->
       <button type="button" class="projeto__media" data-video-grupo data-abrir="caso-plastic"
          data-cursor="Ver como foi feito" data-en-data-cursor="See how it was made"
          aria-label="Ver como foi feito o site do Plastic Club" data-en-aria-label="See how the Plastic Club website was made">
@@ -250,7 +252,7 @@
           <li>HTML</li><li>CSS</li><li>JavaScript</li><li data-en="Local SEO">SEO local</li><li data-en="Accessibility">Acessibilidade</li>
         </ul>
         <div class="projeto__acoes">
-          <a class="botao" href="https://plasticclub.pt" target="_blank" rel="noopener" hidden><span data-en="Visit the site">Visitar o site</span><svg><use href="#i-seta"/></svg></a>
+          <button type="button" class="botao botao--em-breve" aria-disabled="true" data-dica="Ainda em desenvolvimento…" data-en-data-dica="Still in development…"><span data-en="Visit the site">Visitar o site</span><svg><use href="#i-seta"/></svg><span class="oculto" data-en="(still in development)">(ainda em desenvolvimento)</span></button>
           <button type="button" class="botao" data-abrir="caso-plastic"><span data-en="How it was made">Como foi feito</span><svg><use href="#i-direita"/></svg></button>
         </div>
       </div>
@@ -578,8 +580,8 @@
       </ol>
     </section>
 
-    <div class="caso__fim" hidden>
-      <a class="botao" href="https://plasticclub.pt" target="_blank" rel="noopener"><span data-en="Visit the site">Visitar o site</span><svg><use href="#i-seta"/></svg></a>
+    <div class="caso__fim">
+      <button type="button" class="botao botao--em-breve" aria-disabled="true" data-dica="Ainda em desenvolvimento…" data-en-data-dica="Still in development…"><span data-en="Visit the site">Visitar o site</span><svg><use href="#i-seta"/></svg><span class="oculto" data-en="(still in development)">(ainda em desenvolvimento)</span></button>
     </div>
   </div>
 </dialog>
